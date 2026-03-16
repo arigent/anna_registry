@@ -247,7 +247,7 @@
     .item-retailer {
       font-size: 0.85rem;
       color: #8a7a6a;
-      margin-bottom: 1rem;
+      margin-bottom: 0.5rem;
       font-family: 'Inter', sans-serif;
     }
 
@@ -390,7 +390,7 @@
     
     .modal-content {
       background: white;
-      borderradius: 16px;
+      border-radius: 16px;
       padding: 2rem;
       max-width: 500px;
       width: 100%;
@@ -532,7 +532,7 @@
             <div class="progress-fill" id="progressFill" style="width: 0%"></div>
           </div>
           <div class="progress-amounts" id="progressAmounts">
-            £0 of £2,691 funded
+            £0 of £2,409 funded
           </div>
         </div>
       </div>
@@ -620,7 +620,7 @@
         description: 'Ultra-compact lightweight stroller with carrycot attachment',
         imageUrl: 'joolz-stroller.png',
         priceGBP: 668,
-        retailer: 'John Lewis / Joolz'
+        retailer: 'John Lewis / Joolz',
         productUrl: 'https://www.joolz.com/uk/en/pushchairs/joolz-aer2-withcot-uk.html'
       },
       {
@@ -629,7 +629,8 @@
         description: 'Bedside crib with multiple height positions and easy-slide function',
         imageUrl: 'chicco-crib.png',
         priceGBP: 229,
-        retailer: 'Chicco'
+        retailer: 'Chicco',
+        productUrl: ''
       },
       {
         id: 3,
@@ -637,7 +638,8 @@
         description: 'Complete high chair set with baby set, cushion, and tray',
         imageUrl: 'stokke-chair.png',
         priceGBP: 349,
-        retailer: 'Stokke / John Lewis'
+        retailer: 'Stokke / John Lewis',
+        productUrl: ''
       },
       {
         id: 4,
@@ -645,7 +647,8 @@
         description: 'Wearable hands-free double electric breast pump',
         imageUrl: 'momcozy-pump.png',
         priceGBP: 139,
-        retailer: 'Amazon / Momcozy'
+        retailer: 'Amazon / Momcozy',
+        productUrl: ''
       },
       {
         id: 5,
@@ -653,7 +656,8 @@
         description: 'UV sterilizer & dryer for bottles and pump parts',
         imageUrl: 'momcozy-sterilizer.png',
         priceGBP: 89,
-        retailer: 'Amazon / Momcozy'
+        retailer: 'Amazon / Momcozy',
+        productUrl: ''
       },
       {
         id: 6,
@@ -661,7 +665,8 @@
         description: 'Smart baby monitor with HD camera, breathing wear, and sleep tracking',
         imageUrl: 'nanit-monitor.png',
         priceGBP: 349,
-        retailer: 'Nanit / John Lewis'
+        retailer: 'Nanit / John Lewis',
+        productUrl: ''
       },
       {
         id: 7,
@@ -669,7 +674,8 @@
         description: 'Wooden changing table with storage drawers and mat',
         imageUrl: 'changing-table.png',
         priceGBP: 229,
-        retailer: 'IKEA'
+        retailer: 'IKEA',
+        productUrl: ''
       },
       {
         id: 8,
@@ -677,7 +683,8 @@
         description: 'Ergonomic breastfeeding pillow with removable cover',
         imageUrl: 'nursing-pillow.png',
         priceGBP: 59,
-        retailer: 'Mothercare'
+        retailer: 'Mothercare',
+        productUrl: ''
       },
       {
         id: 9,
@@ -685,7 +692,8 @@
         description: '6-month supply of eco-friendly nappies (sizes newborn-6 months)',
         imageUrl: 'nappies.png',
         priceGBP: 299,
-        retailer: 'Bambino Mio / The Nappy Collective'
+        retailer: 'Bambino Mio / The Nappy Collective',
+        productUrl: ''
       }
     ];
     
@@ -702,7 +710,7 @@
     let currentCurrency = 'GBP';
     let contributions = {};
     
- // Load contributions from localStorage
+    // Load contributions from localStorage
     function loadContributions() {
       const saved = localStorage.getItem('babyRegistryContributions');
       if (saved) {

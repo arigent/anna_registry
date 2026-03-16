@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Our Baby Registry</title>
+  <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@300;400;500;600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      min-height: 100vh;
+      background: linear-gradient(135deg, #faf8f6 0%, #f5f0eb 100%);
+      font-family: 'Crimson Pro', serif;
+    }
+    
+    .header {
+      background: linear-gradient(120deg, #f4e8dd 0%, #e8d5c4 100%);
+      padding: 3rem 2rem;
+      text-align: center;
+      border-bottom: 3px solid #d4b5a0;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .header::before {
+      content: '';
+      position: absolute;
+      top: -50px;
+      right: -50px;
+      width: 200px;
+      height: 200px;
+      background: radial-gradient(circle, rgba(255,255,255,0.4) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+    
+    .header::after {
+      content: '';
+      position: absolute;
+      bottom: -30px;
+      left: -30px;
+      width: 150px;
+      height: 150px;
+      background: radial-gradient(circle, rgba(255,255,255,0.3) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+    
+    .header-content {
+      position: relative;
+      z-index: 1;
+    }
+    
+    .gift-icon {
+      width: 48px;
+      height: 48px;
+      margin: 0 auto 1rem;
+      color: #c89b7c;
+    }
+    
+    h1 {
+      font-size: 3.5rem;
+      margin: 0 0 0.5rem 0;
+      color: #5a4a3a;
+      font-weight: 400;
+      letter-spacing: 0.02em;
+    }
+    
+    .subtitle {
+      font-size: 1.3rem;
+      color: #8a7a6a;
+      font-family: 'Inter', sans-serif;
+      font-weight: 300;
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 2rem auto;
+      padding: 0 2rem;
+    }
+    
+    .controls-card {
+      background: white;
+      border-radius: 12px;
+      padding: 2rem;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+      margin-bottom: 2rem;
+    }
+    
+    .controls-grid {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+    }
+    
+    .currency-selector label {
+      display: block;
+      font-size: 0.9rem;
+      color: #8a7a6a;
+      margin-bottom: 0.5rem;
+      font-family: 'Inter', sans-serif;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      font-weight: 500;
+    }
+    
+    select {
+      padding: 0.75rem 2.5rem 0.75rem 1rem;
+      font-size: 1.1rem;
+      border: 2px solid #e8d5c4;
+      border-radius: 8px;
+      background: white;
+      color: #5a4a3a;
+      cursor: pointer;
+      font-family: 'Inter', sans-serif;
+      font-weight: 500;
+      appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1L6 6L11 1' stroke='%235a4a3a' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 1rem center;
+    }
+    
+    .progress-section {
+      flex: 1;
+      min-width: 300px;
+    }
+    
+    .progress-header {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 0.5rem;
+      font-family: 'Inter', sans-serif;
+    }
+    
+    .progress-label {
+      font-size: 0.9rem;
+      color: #8a7a6a;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      font-weight: 500;
+    }
+    
+    .progress-percentage {
+      font-size: 1rem;
+      color: #5a4a3a;
+      font-weight: 600;
+    }
+    
+    .progress-bar {
+      height: 12px;
+      background: #f5f0eb;
+      border-radius: 10px;
+      overflow: hidden;
+      border: 1px solid #e8d5c4;
+    }
+    
+    .progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, #d4b5a0 0%, #c89b7c 100%);
+      border-radius: 10px;
+      transition: width 0.6s ease;
+    }
+    
+    .progress-amounts {
+      margin-top: 0.5rem;
+      font-size: 0.95rem;
+      color: #8a7a6a;
+      font-family: 'Inter', sans-serif;
+    }
+    
+    .items-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 2rem;
+      margin-bottom: 3rem;
+    }
+    
+    .item-card {
+      background: white;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      animation: fadeInUp 0.6s ease backwards;
+    }
+    
+    .item-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+    }
+    
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    .item-image {
+      height: 240px;
+      overflow: hidden;
+      position: relative;
+    }
+    
+    .item-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    
+    .item-content {
+      padding: 1.5rem;
+    }
+    
+    .item-name {
+      font-size: 1.5rem;
+      margin: 0 0 0.5rem 0;
+      color: #5a4a3a;
+      font-weight: 500;
+    }
+    
+    .item-description {
+      font-size: 0.95rem;
+      color: #8a7a6a;
+      margin: 0 0 1rem 0;
+      font-family: 'Inter', sans-serif;
+      line-height: 1.5;
+    }
+    
+    .item-price {
+      font-size: 1.8rem;
+      color: #c89b7c;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      font-family: 'Inter', sans-serif;
+    }
+    
+    .item-retailer {
+      font-size: 0.85rem;
+      color: #8a7a6a;
+      margin-bottom: 1rem;
+      font-family: 'Inter', sans-serif;
+    }
+    
+    .contribute-button {
+      width: 100%;
+      padding: 0.9rem;
+      background: linear-gradient(120deg, #c89b7c 0%, #b8876c 100%);
+      color: white;
+      border: none;
+      border-radius: 10px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      font-family: 'Inter', sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      transition: all 0.3s ease;
+    }
+    
+    .contribute-button:hover {
+      transform: scale(1.02);
+      box-shadow: 0 4px 12px rgba(200,155,124,0.3);
+    }
+    
+    .info-box {
+      background: linear-gradient(120deg, #f9f6f3 0%, #f5f0eb 100%);
+      border: 2px solid #e8d5c4;
+      border-radius: 12px;
+      padding: 2rem;
+      margin-bottom: 3rem;
+    }
+    
+    .info-title {
+      font-size: 1.5rem;
+      margin: 0 0 1rem 0;
+      color: #5a4a3a;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    
+    .info-content {
+      font-size: 1rem;
+      color: #6a5a4a;
+      font-family: 'Inter', sans-serif;
+      line-height: 1.7;
+    }
+    
+    .info-content p {
+      margin: 0 0 1rem 0;
+    }
+    
+    .info-content p:last-child {
+      margin: 0;
+    }
+    
+    .info-content strong {
+      font-weight: 600;
+    }
+    
+    .revolut-link {
+      color: #c89b7c;
+      font-weight: 600;
+      text-decoration: none;
+      border-bottom: 2px solid #e8d5c4;
+      transition: border-color 0.2s ease;
+    }
+    
+    .revolut-link:hover {
+      border-color: #c89b7c;
+    }
+    
+    .toast {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      background: linear-gradient(120deg, #4ade80 0%, #22c55e 100%);
+      color: white;
+      padding: 1.5rem 2rem;
+      border-radius: 12px;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+      display: none;
+      align-items: center;
+      gap: 1rem;
+      z-index: 1001;
+      font-family: 'Inter', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 600;
+      animation: slideInRight 0.3s ease;
+    }
+    
+    .toast.show {
+      display: flex;
+    }
+    
+    @keyframes slideInRight {
+      from {
+        opacity: 0;
+        transform: translateX(100px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+    
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 2.5rem;
+      }
+      
+      .items-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .controls-grid {
+        flex-direction: column;
+        align-items: stretch;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="header-content">
+      <svg class="gift-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v13m0-13V6a2 2 0 112 2h-2zm0 0V5.5A2.5 2.5 0 109.5 8H12zm-7 4h14M5 12a2 2 0 110-4h14a2 2 0 110 4M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7"></path>
+      </svg>
+      <h1>Our Baby Registry</h1>
+      <p class="subtitle">Help us prepare for our little one</p>
+    </div>
+  </header>
+
+  <div class="container">
+    <div class="controls-card">
+      <div class="controls-grid">
+        <div class="currency-selector">
+          <label>Select Currency</label>
+          <select id="currencySelect">
+            <option value="GBP">GBP (£)</option>
+            <option value="EUR">EUR (€)</option>
+          </select>
+        </div>
+
+        <div class="progress-section">
+          <div class="progress-header">
+            <span class="progress-label">Overall Progress</span>
+            <span class="progress-percentage" id="progressPercentage">0%</span>
+          </div>
+          <div class="progress-bar">
+            <div class="progress-fill" id="progressFill" style="width: 0%"></div>
+          </div>
+          <div class="progress-amounts" id="progressAmounts">
+            £0 of £2,691 funded
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="items-grid" id="itemsGrid">
+      <!-- Items will be rendered here by JavaScript -->
+    </div>
+
+    <div class="info-box">
+      <h3 class="info-title">
+        <svg width="24" height="24" fill="none" stroke="#c89b7c" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+        </svg>
+        How to Contribute
+      </h3>
+      <div class="info-content">
+        <p>
+          <strong>We've opted for cash contributions!</strong> This gives us the flexibility to purchase these items when we need them, 
+          or adapt to any changing needs as baby arrives.
+        </p>
+        <p>
+          When you click <strong>"Contribute via Revolut"</strong> on any item, you'll be taken to our joint Revolut account 
+          where you can send a contribution in GBP or EUR (or any other currency - Revolut handles all conversion automatically).
+        </p>
+        <p>
+          <strong>Our Revolut link:</strong> 
+          <a href="https://revolut.me/yourname" target="_blank" rel="noopener noreferrer" class="revolut-link" id="revolutLinkDisplay">
+            https://revolut.me/yourname
+          </a>
+        </p>
+        <p>
+          💡 <strong>Tip:</strong> Feel free to add a note with the item name when you send your contribution, 
+          but it's completely optional - we're grateful for any support!
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="toast" id="toast">
+    <svg width="24" height="24" fill="white" stroke="white" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+    </svg>
+    Redirecting to Revolut...
+  </div>
+
+  <script>
+    // IMPORTANT: Update this with your actual Revolut link!
+    const REVOLUT_LINK = "https://revolut.me/yourname";
+    
+    const registryItems = [
+      {
+        id: 1,
+        name: 'Joolz Aer+ Stroller & Carrycot',
+        description: 'Ultra-compact lightweight stroller with carrycot attachment',
+        imageUrl: 'https://images.unsplash.com/photo-1544217804-55f0d56509f4?w=400&h=400&fit=crop',
+        priceGBP: 949,
+        retailer: 'John Lewis / Joolz'
+      },
+      {
+        id: 2,
+        name: 'Chicco Next to Me Magic Crib',
+        description: 'Bedside crib with multiple height positions and easy-slide function',
+        imageUrl: 'https://images.unsplash.com/photo-1584831761197-6f2b16defb7a?w=400&h=400&fit=crop',
+        priceGBP: 229,
+        retailer: 'Argos / Boots'
+      },
+      {
+        id: 3,
+        name: 'Stokke Tripp Trapp Chair & Accessories',
+        description: 'Complete high chair set with baby set, cushion, and tray',
+        imageUrl: 'https://images.unsplash.com/photo-1606767593538-96cf921a9272?w=400&h=400&fit=crop',
+        priceGBP: 349,
+        retailer: 'Stokke / John Lewis'
+      },
+      {
+        id: 4,
+        name: 'Momcozy S12 Pro Breast Pump',
+        description: 'Wearable hands-free double electric breast pump',
+        imageUrl: 'https://images.unsplash.com/photo-1515488042361-ee00e0ddd4e4?w=400&h=400&fit=crop',
+        priceGBP: 139,
+        retailer: 'Amazon / Momcozy'
+      },
+      {
+        id: 5,
+        name: 'Momcozy UV Bottle Sterilizer',
+        description: 'UV sterilizer & dryer for bottles and pump parts',
+        imageUrl: 'https://images.unsplash.com/photo-1602524206684-bc8c4065ddc5?w=400&h=400&fit=crop',
+        priceGBP: 89,
+        retailer: 'Amazon / Momcozy'
+      },
+      {
+        id: 6,
+        name: 'Nanit Pro Complete Monitoring System',
+        description: 'Smart baby monitor with HD camera, breathing wear, and sleep tracking',
+        imageUrl: 'https://images.unsplash.com/photo-1612198188060-c7c2a3b66eae?w=400&h=400&fit=crop',
+        priceGBP: 349,
+        retailer: 'Nanit / John Lewis'
+      },
+      {
+        id: 7,
+        name: 'Premium Changing Table',
+        description: 'Wooden changing table with storage drawers and mat',
+        imageUrl: 'https://images.unsplash.com/photo-1555680218-0f3dd6e46d66?w=400&h=400&fit=crop',
+        priceGBP: 229,
+        retailer: 'Mamas & Papas / IKEA'
+      },
+      {
+        id: 8,
+        name: 'Nursing Pillow',
+        description: 'Ergonomic breastfeeding pillow with removable cover',
+        imageUrl: 'https://images.unsplash.com/photo-1587045161718-f09a37a8da95?w=400&h=400&fit=crop',
+        priceGBP: 59,
+        retailer: 'Boots / Mothercare'
+      },
+      {
+        id: 9,
+        name: 'Nappy Starter Bundle',
+        description: '6-month supply of eco-friendly nappies (sizes newborn-6 months)',
+        imageUrl: 'https://images.unsplash.com/photo-1584753987666-0493e4363764?w=400&h=400&fit=crop',
+        priceGBP: 299,
+        retailer: 'Bambino Mio / The Nappy Collective'
+      }
+    ];
+    
+    const exchangeRates = {
+      GBP: 1,
+      EUR: 1.17
+    };
+    
+    const currencySymbols = {
+      GBP: '£',
+      EUR: '€'
+    };
+    
+    let currentCurrency = 'GBP';
+    
+    function convertPrice(priceGBP) {
+      return (priceGBP * exchangeRates[currentCurrency]).toFixed(2);
+    }
+    
+    function getCurrencySymbol() {
+      return currencySymbols[currentCurrency];
+    }
+    
+    function getTotalGoal() {
+      return registryItems.reduce((sum, item) => sum + item.priceGBP, 0);
+    }
+    
+    function renderItems() {
+      const grid = document.getElementById('itemsGrid');
+      grid.innerHTML = registryItems.map((item, index) => `
+        <div class="item-card" style="animation-delay: ${index * 0.1}s">
+          <div class="item-image">
+            <img src="${item.imageUrl}" alt="${item.name}">
+          </div>
+          <div class="item-content">
+            <h3 class="item-name">${item.name}</h3>
+            <p class="item-description">${item.description}</p>
+            <div class="item-price">${getCurrencySymbol()}${convertPrice(item.priceGBP)}</div>
+            <div class="item-retailer">Available at: ${item.retailer}</div>
+            <button class="contribute-button" onclick="handleContribute()">
+              <svg width="18" height="18" fill="none" stroke="white" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+              </svg>
+              Contribute via Revolut
+            </button>
+          </div>
+        </div>
+      `).join('');
+    }
+    
+    function updateProgress() {
+      const totalGoal = getTotalGoal();
+      const symbol = getCurrencySymbol();
+      document.getElementById('progressAmounts').textContent = 
+        `${symbol}0 of ${symbol}${convertPrice(totalGoal)} funded`;
+    }
+    
+    function handleContribute() {
+      window.open(REVOLUT_LINK, '_blank');
+      showToast();
+    }
+    
+    function showToast() {
+      const toast = document.getElementById('toast');
+      toast.classList.add('show');
+      setTimeout(() => {
+        toast.classList.remove('show');
+      }, 5000);
+    }
+    
+    document.getElementById('currencySelect').addEventListener('change', (e) => {
+      currentCurrency = e.target.value;
+      renderItems();
+      updateProgress();
+    });
+    
+    // Update the displayed Revolut link
+    document.getElementById('revolutLinkDisplay').href = REVOLUT_LINK;
+    document.getElementById('revolutLinkDisplay').textContent = REVOLUT_LINK;
+    
+    // Initial render
+    renderItems();
+    updateProgress();
+  </script>
+</body>
+</html>

@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Our Baby Registry</title>
+  <title>Getting ready for Anna!</title>
   <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@300;400;500;600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <style>
     * {
@@ -249,6 +249,23 @@
       color: #8a7a6a;
       margin-bottom: 1rem;
       font-family: 'Inter', sans-serif;
+    }
+
+    .view-product-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      font-size: 0.85rem;
+      color: #c89b7c;
+      text-decoration: none;
+      font-family: 'Inter', sans-serif;
+      font-weight: 600;
+      margin-bottom: 1rem;
+      transition: color 0.2s ease;
+    }
+    
+    .view-product-link:hover {
+      color: #b8876c;
     }
     
     .contribute-button {
@@ -599,11 +616,12 @@
     const registryItems = [
       {
         id: 1,
-        name: 'Joolz Aer+ Stroller & Carrycot',
+        name: 'Joolz Aer² with cot',
         description: 'Ultra-compact lightweight stroller with carrycot attachment',
         imageUrl: 'joolz-stroller.png',
-        priceGBP: 949,
+        priceGBP: 668,
         retailer: 'John Lewis / Joolz'
+        productUrl: 'https://www.joolz.com/uk/en/pushchairs/joolz-aer2-withcot-uk.html'
       },
       {
         id: 2,
@@ -684,7 +702,7 @@
     let currentCurrency = 'GBP';
     let contributions = {};
     
-    // Load contributions from localStorage
+ // Load contributions from localStorage
     function loadContributions() {
       const saved = localStorage.getItem('babyRegistryContributions');
       if (saved) {
@@ -743,6 +761,14 @@
             <p class="item-description">${item.description}</p>
             <div class="item-price">${getCurrencySymbol()}${convertPrice(item.priceGBP)}</div>
             <div class="item-retailer">Available at: ${item.retailer}</div>
+            ${item.productUrl ? `
+              <a href="${item.productUrl}" target="_blank" rel="noopener noreferrer" class="view-product-link">
+                <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+                </svg>
+                View Product
+              </a>
+            ` : ''}
             
             <!-- Progress Section -->
             <div style="margin-bottom: 1rem;">

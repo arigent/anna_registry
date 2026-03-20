@@ -315,7 +315,11 @@
     }
     
     .flag-icon {
-      font-size: 1.8rem;
+      width: 32px;
+      height: 24px;
+      border-radius: 3px;
+      overflow: hidden;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.2);
     }
     
     .info-content {
@@ -523,7 +527,7 @@
       <svg class="gift-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v13m0-13V6a2 2 0 112 2h-2zm0 0V5.5A2.5 2.5 0 109.5 8H12zm-7 4h14M5 12a2 2 0 110-4h14a2 2 0 110 4M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7"></path>
       </svg>
-      <h1>Getting ready for Anna!</h1>
+      <h1>Our Baby Registry</h1>
       <p class="subtitle">Help us prepare for our little one</p>
     </div>
   </header>
@@ -562,13 +566,23 @@
       <!-- English Version -->
       <div class="language-section">
         <h3 class="info-title">
-          <span class="flag-icon">🇬🇧</span>
+          <svg class="flag-icon" viewBox="0 0 60 30" xmlns="http://www.w3.org/2000/svg">
+            <clipPath id="s"><path d="M0,0 v30 h60 v-30 z"/></clipPath>
+            <clipPath id="t"><path d="M30,15 h30 v15 z v15 h-30 z h-30 v-15 z v-15 h30 z"/></clipPath>
+            <g clip-path="url(#s)">
+              <path d="M0,0 v30 h60 v-30 z" fill="#012169"/>
+              <path d="M0,0 L60,30 M60,0 L0,30" stroke="#fff" stroke-width="6"/>
+              <path d="M0,0 L60,30 M60,0 L0,30" clip-path="url(#t)" stroke="#C8102E" stroke-width="4"/>
+              <path d="M30,0 v30 M0,15 h60" stroke="#fff" stroke-width="10"/>
+              <path d="M30,0 v30 M0,15 h60" stroke="#C8102E" stroke-width="6"/>
+            </g>
+          </svg>
           How to Contribute
         </h3>
         <div class="info-content">
           <p>
             <strong>We've opted for cash contributions!</strong> This gives us the flexibility to purchase these items when we need them, 
-            or adapt to any changing needs as baby arrives.
+            or adapt to any changing needs as Anna arrives.
           </p>
           <p>
             When you click <strong>"Contribute via Revolut"</strong> on any item, you'll be able to choose which account to send to. 
@@ -584,8 +598,7 @@
             </a>
           </p>
           <p>
-            💡 <strong>Tip:</strong> Feel free to add a note with the item name when you send your contribution, 
-            but it's completely optional - we're grateful for any support!
+            ❤️ <strong>Thanks!</strong> Of course, it's completely optional - but we're grateful for any support!
           </p>
         </div>
       </div>
@@ -593,17 +606,20 @@
       <!-- Italian Version -->
       <div class="language-section">
         <h3 class="info-title">
-          <span class="flag-icon">🇮🇹</span>
+          <svg class="flag-icon" viewBox="0 0 3 2" xmlns="http://www.w3.org/2000/svg">
+            <rect width="3" height="2" fill="#009246"/>
+            <rect width="2" height="2" x="1" fill="#fff"/>
+            <rect width="1" height="2" x="2" fill="#ce2b37"/>
+          </svg>
           Come Contribuire
         </h3>
         <div class="info-content">
           <p>
-            <strong>Abbiamo optato per contributi in denaro!</strong> Questo ci dà la flessibilità di acquistare questi articoli quando ne abbiamo bisogno, 
-            o adattarci a eventuali esigenze che cambiano quando arriva il bambino.
+            Abbiamo scelto di ricevere contributi in denaro, così possiamo comprare ciò che ci serve davvero al momento giusto e adattarci più facilmente a eventuali cambiamenti con l’arrivo di Anna
           </p>
           <p>
-            Quando clicchi su <strong>"Contribuisci tramite Revolut"</strong> su qualsiasi articolo, potrai scegliere a quale account inviare. 
-            Revolut gestisce automaticamente tutte le conversioni di valuta.
+            Quando clicchi su <strong>"Contribuisci tramite Revolut"</strong> su un articolo, puoi scegliere liberamente a quale account inviare il contributo. 
+            Revolut si occupa automaticamente anche della conversione di valuta.
           </p>
           <p>
             <strong>I nostri account Revolut:</strong><br>
@@ -615,8 +631,7 @@
             </a>
           </p>
           <p>
-            💡 <strong>Suggerimento:</strong> Sentiti libero di aggiungere una nota con il nome dell'articolo quando invii il tuo contributo, 
-            ma è completamente facoltativo - siamo grati per qualsiasi supporto!
+            ❤️ <strong>Grazie!</strong> Ovviamente è tutto facoltativo, ma ogni aiuto è davvero apprezzato!
           </p>
         </div>
       </div>
